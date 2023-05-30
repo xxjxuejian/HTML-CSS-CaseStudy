@@ -1,0 +1,28 @@
+.wrapper_01 {
+  width: 1100px;
+  margin: 0 auto;
+}
+
+.wrapper_02 {
+  width: 980px;
+  margin: 0 auto;
+}
+
+.wrapper_03 {
+  width: 980px;
+  margin: 0 auto;
+}
+
+/* 精灵图 */
+.topbar_sprite {
+  position: absolute;
+  background-image: url("../images/topbar_sprite.png");
+}
+
+/* hot的图标的大小和偏移量 */
+.topbar_icon_hot {
+  width: 28px;
+  height: 19px;
+  background-position: -190px 0;
+}
+
