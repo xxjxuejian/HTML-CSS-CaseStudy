@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./css/reset.css">
+  <link rel="stylesheet" href="./css/common.css">
+  <link rel="stylesheet" href="./css/界面搭建.css">
+  <style>
+  </style>
+</head>
+<body>
+  
+  <div class="wrapper">
+    <div class="crumbs">
+      <span class="item">首页</span>
+      <span>&gt;</span>
+      <span class="item">笔记本</span>
+    </div>    
+
+    <!--  -->
+    <div class="operation">
+      <ul class="row category">
+        <li class="item">分类</li>
+        <li class="item">笔记本</li>
+        <li class="item">台式机</li>
+        <li class="item">智慧屏</li>
+      </ul>
+      <ul class="row discount">
+        <li class="item">服务优惠</li>
+        <li class="item active">仅看有货</li>
+        <li class="item">分期免息</li>
+        <li class="item">优惠商品</li>
+      </ul>
+      <ul class="row sort">
+        <li class="item">排序</li>
+        <li class="item active">综合</li>
+        <li class="item">最新</li>
+        <li class="item">评论数</li>
+        <li class="item">价格</li>
+      </ul>
+    </div>
+
+
+    <ul class="products">
+      <!-- <li class="item">
+        <a href="#">
+          <img class="album" src="./imges/product_01.webp" alt="">
+          <div class="title">HUAWEI MATEBook E 12.6英寸</div>
+          <div class="desc">预定立省300元|12期免息</div>
+          <div class="price">￥6499</div>
+          <div class="discount">
+            <span class="tip">分期免息</span>
+            <span class="tip">赠送积分</span>
+          </div>
+          <div class="comment">
+            <span class="cm-num">3190人评价</span>
+            <span class="cm-rate">96%好评</span>
+          </div>
+        </a>
+      </li> -->
+
+
+     
+    </ul>
+  </div>
+
+
+  <script src="./json/product_data.js"></script>
+  <script>
+
+    // 这种方式推荐仅仅展示数据的时候使用，如果需要太多的用户操作，不适合
+
+    const serverURL = "https://res.vmallres.com/pimages/";
+
+    const productsEl = document.querySelector(".products");
+    for(let item of resultList){
+
+      // 提前拼接一下动态的内容
+      let discountString = "";
+      for(value of item["promoLabels"]){
+        discountString += `<span class="tip">${value}</span>`;
+      }
+
+      // 创建li元素
+      const liEl = document.createElement("li");
+      liEl.classList.add("item");
+      liEl.innerHTML = `
+      <a href="#">
+          <img class="album" src="${serverURL}${item["photoPath"]}800_800_${item["photoName"]}" alt="">
+          <div class="title">${item["name"]}</div>
+          <div class="desc">${item["promotionInfo"]}</div>
+          <div class="price">￥${item["priceAccurate"]}</div>
+          <div class="discount">
+            ${discountString}
+          </div>
+          <div class="comment">
+            <span class="cm-num">${item["rateCount"]}人评价</span>
+            <span class="cm-rate">${item["goodRate"]}%好评</span>
+          </div>
+        </a>
+        `
+        productsEl.append(liEl);
+    }
+  </script>
+</body>
+</html>

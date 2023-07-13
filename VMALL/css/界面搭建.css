@@ -1,0 +1,95 @@
+.crumbs {
+  height: 63px;
+  line-height: 63px;
+  font-size: 12px;
+}
+.crumbs > .item {
+  cursor: pointer;
+}
+.crumbs > .item:last-child{
+  color: #000;
+}
+
+/* 操作列表 */
+.operation {
+  padding: 0 24px;
+  background-color: #fff;
+}
+.operation > .row {
+  display: flex;
+}
+.operation > .row .item {
+  width: 104px;
+  height: 48px;
+  line-height: 48px;
+  font-size: 12px;
+  color: #000;
+  cursor: pointer;
+}
+.operation > .row .item.active {
+  color: red;
+}
+.operation > .row .item:first-child {
+  color: #666;
+  cursor: auto;
+}
+
+
+/* 商品列表 */
+.products {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.products > .item {
+  width: 291px;
+  height: 386px;
+  margin-bottom: 12px;
+}
+
+.products > .item a {
+  display: block;
+  text-align: center;
+}
+
+.products > .item .album{
+  width: 180px;
+  height: 180px;
+  margin: 30px 0;
+}
+
+.products > .item .title{
+  font-weight: 700;
+  color: #000;
+  margin-bottom: 5px;
+}
+.products > .item .desc {
+  color: #666;
+}
+
+.products > .item .price {
+  margin: 8px 0 10px;
+  color: red;
+}
+
+.products > .item .discount {
+  margin-bottom: 10px;
+  font-size: 12px;
+}
+.products > .item .discount .tip {
+  margin: 0 3px;
+  padding: 2px 5px;
+  border: 1px solid red;
+  border-radius: 3px;
+  color: red;
+}
+
+.products > .item .comment {
+  font-size: 12px;
+}
+.products > .item .comment .cm-num,
+.products > .item .comment .cm-rate{
+  margin: 0 3px;
+}

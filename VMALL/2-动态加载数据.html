@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./css/reset.css">
+  <link rel="stylesheet" href="./css/common.css">
+  <link rel="stylesheet" href="./css/界面搭建.css">
+  <style>
+  </style>
+</head>
+<body>
+  
+  <div class="wrapper">
+    <div class="crumbs">
+      <span class="item">首页</span>
+      <span>&gt;</span>
+      <span class="item">笔记本</span>
+    </div>    
+
+    <!--  -->
+    <div class="operation">
+      <ul class="row category">
+        <li class="item">分类</li>
+        <li class="item">笔记本</li>
+        <li class="item">台式机</li>
+        <li class="item">智慧屏</li>
+      </ul>
+      <ul class="row discount">
+        <li class="item">服务优惠</li>
+        <li class="item active">仅看有货</li>
+        <li class="item">分期免息</li>
+        <li class="item">优惠商品</li>
+      </ul>
+      <ul class="row sort">
+        <li class="item">排序</li>
+        <li class="item active">综合</li>
+        <li class="item">最新</li>
+        <li class="item">评论数</li>
+        <li class="item">价格</li>
+      </ul>
+    </div>
+
+
+    <ul class="products">
+      <!-- 
+      <li class="item">
+        <a href="#">
+          <img class="album" src="./imges/product_01.webp" alt="">
+          <div class="title">HUAWEI MATEBook E 12.6英寸</div>
+          <div class="desc">预定立省300元|12期免息</div>
+          <div class="price">￥6499</div>
+          <div class="discount">
+            <span class="tip">分期免息</span>
+            <span class="tip">赠送积分</span>
+          </div>
+          <div class="comment">
+            <span class="cm-num">3190人评价</span>
+            <span class="cm-rate">96%好评</span>
+          </div>
+        </a>
+      </li> 
+    -->
+
+
+     
+    </ul>
+  </div>
+
+
+  <script src="./json/product_data.js"></script>
+  <script>
+
+    // 这种方式适用于更多的交互
+    
+    const serverURL = "https://res.vmallres.com/pimages/";
+
+    const productsEl = document.querySelector(".products");
+    for(let item of resultList){
+      // 创建li元素
+      const liEl = document.createElement("li");
+      liEl.classList.add("item");
+
+      // 最外层超链接
+      const aEl = document.createElement("a");
+
+      // 图片
+      const albumEl = document.createElement("img");
+      albumEl.src = `${serverURL}${item["photoPath"]}800_800_${item["photoName"]}`;
+      albumEl.classList.add("album");
+      aEl.append(albumEl);
+
+      // 标题
+      const titleEl = document.createElement("div");
+      titleEl.classList.add("title");
+      titleEl.textContent = item["name"];
+      aEl.append(titleEl);
+
+      // 描述
+      const descEl = document.createElement("div");
+      descEl.classList.add("desc");
+      descEl.textContent = item["promotionInfo"];
+      aEl.append(descEl);
+
+      // 价格
+      const priceEl = document.createElement("div");
+      priceEl.classList.add("price");
+      priceEl.textContent = "￥" + item["priceAccurate"];
+      aEl.append(priceEl);
+
+      // 优惠
+      const discountEl = document.createElement("div");
+      discountEl.classList.add("discount");
+      for(let value of item["promoLabels"]){
+        const spanEl = document.createElement("span");
+        spanEl.classList.add("tip");
+        spanEl.textContent = value;
+        discountEl.append(spanEl);
+      }
+      aEl.append(discountEl);
+
+      // 评论
+      const commentEl = document.createElement("div");
+      commentEl.classList.add("comment");
+      
+      const numEl = document.createElement("span");
+      const rateEl = document.createElement("span");
+      // 评论人数
+      numEl.classList.add("cm-num");
+      numEl.textContent = item["rateCount"] + "人评价";
+      commentEl.append(numEl); 
+
+      // 好评率
+      rateEl.classList.add("cm-rate");
+      rateEl.textContent = item["goodRate"] + "%好评";
+      commentEl.append(rateEl);
+
+      aEl.append(commentEl);
+
+      liEl.append(aEl);
+      productsEl.append(liEl);
+    }
+  </script>
+</body>
+</html>
