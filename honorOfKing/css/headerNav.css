@@ -1,3 +1,5 @@
+@import url(animation.css);
+
 .header{
   position: absolute;
   left: 0;
@@ -5,7 +7,7 @@
   width: 100%;
   min-width: 1300px;
   height: 84px;
-  z-index: 99;
+  z-index: 9;
   background: rgba(0,0,0,0.8);
 }
 
@@ -45,16 +47,16 @@
   width: 110px;
   height: 64px;
   padding: 20px 0 0;
-  line-height: 30px;
+  /* line-height: 30px; */
   text-align: center;
   color: #c9c9dd;
   font-size: 18px;
 }
 .header-nav .nav .item span {
   display: block;
-  padding-top: 5px;
+  padding-top: 8px;
   font-size: 12px;
-  line-height: 16px;
+  /* line-height: 16px; */
   color: #858792;
 }
 
@@ -97,7 +99,44 @@
   color: #858792;
 }
 
-.main {
-  height: 300px;
-  background-color: rgb(135, 232, 125);
+/* header的下级导航栏 */
+.header .subnav {
+  position: absolute;
+  top: 83px;
+  left: 0;
+  width: 100%;
+  height: 0;
+  overflow: hidden;
+  background: rgba(0,0,0,0.7);
+  transition: height .3s ease;
+}
+.header:hover .subnav {
+  height: 285px;
+}
+
+.header .subnav .subnav-list {
+  display: flex;
+  width: 890px;
+  padding: 15px 0 30px 50px;
+  margin: 0 auto;
+}
+
+.header .subnav .subnav-list .list {
+  width: 110px;
+  padding: 2px 2.5px;
+}
+
+.header .subnav .subnav-list .list .item {
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+}
+.header .subnav .subnav-list .list .item a{
+  font-size: 14px;
+  color: #c9c9dd;
+}
+
+.header .subnav .subnav-list .list .item a:hover {
+  color: #f3c258;
+  text-decoration: underline;
 }

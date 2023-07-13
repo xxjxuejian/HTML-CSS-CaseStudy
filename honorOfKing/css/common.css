@@ -1,5 +1,281 @@
+body{
+  margin: 0;
+  padding: 0;
+  font: 14px "Microsoft YaHei",Tahoma,"simsun",sans-serif;
+  min-width: 1300px;
+}
+
 .top_wrapper {
   width: 980px;
   margin: 0 auto;
 }
+.main_center {
+  width: 1200px;
+  margin: 0 auto;
+}
 
+
+/* 新闻类型的图标*/
+/* .news_type {
+  display: inline-block;
+  width: 32px;
+  line-height: 16px;
+  vertical-align: top;
+  margin-top: 2px;
+  margin-right: 5px;
+  border-radius: 2px;
+  text-align: center;
+  font-size: 12px;
+} */
+/* 热门新闻图标 */
+/* .news_type_hot {
+  color: #ff3636;
+  border: 1px solid currentColor;
+} */
+
+/* 新闻图标 */
+/* .news_type_press {
+  color: #1e96ab;
+  border: 1px solid currentColor;
+} */
+
+/* 公告图标 */
+/* .news_type_notice {
+  color: #f4be19;
+  border: 1px solid currentColor;
+}  */
+
+
+/* 
+使用伪元素来做上面的图标
+*/
+.news_type::before {
+  display: inline-block;
+  width: 32px;
+  height: 16px;
+  line-height: 16px;
+  margin-top: 2px;
+  margin-right: 5px;
+  border-radius: 2px;
+  text-align: center;
+  font-size: 12px;
+}
+
+.news_type_notice::before {
+  content: "公告";
+  color: #f4be19;
+  border: 1px solid #f4be19;
+}
+
+/* 热门图标 */
+.news_type_hot::before {
+  content: "热门";
+  color: #ff3636;
+  border: 1px solid  #ff3636;
+}
+
+/* 公告图标 */
+/* 热门图标 */
+.news_type_press::before {
+  content: "新闻";
+  color: #1e96ab;
+  border: 1px solid  #1e96ab;
+}
+
+
+
+/* 标题栏 */
+.header_type_01 {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  height: 26px;
+  line-height: 26px;
+  margin-bottom: 16px;
+}
+
+.header_type_01 .title {
+  box-sizing: border-box;
+  width: 140px;
+  padding-left: 33px;
+  letter-spacing: 1px;
+  font-size: 22px;
+  font-weight: 600;
+  background: url("../images/header-imgs/header-sprite-01.webp") no-repeat 0 -106px;
+}
+.title.hero {
+  background-position: 0 -144px;
+}
+.title.match {
+  background-position: 0 -184px;
+}
+.title.match_schedule {
+  background-position: -157px -106px;
+}
+
+.header_type_01 .more {
+  padding-left: 22px;
+  color: #999;
+  background: url("../images/header-imgs/header-sprite-01.webp") no-repeat -252px 6px;
+}
+.header_type_01 .more:hover {
+  color: #f3c258;
+}
+
+.header_type_01 .buy-tickets {
+  position: absolute;
+  top: 0;
+  right: 68px;
+  box-sizing: border-box;
+  width: 70px;
+  height: 26px;
+  line-height: 24px;
+  padding-left: 32px;
+  border: 1px solid #f3c258;
+  border-radius: 3px;
+  background: url("../images/header-imgs/header-sprite-01.webp") no-repeat -243px -83px;
+  color: #323235;
+}
+
+/* 选项卡样式 */
+.tab_control_01 {
+  display: flex;
+  height: 32px;
+  line-height: 29px;
+  background: #f5f5f5;
+}
+
+.tab_control_01 .tab_control_item {
+  flex: 1;
+  font-size: 14px;
+  color: #999;
+  text-align: center;
+  cursor: pointer;
+}
+.tab_control_01 .tab_control_item.active,
+.tab_control_01 .tab_control_item:hover {
+  border-bottom: 3px solid #f3c258;
+  color: #333333;
+}
+.tab_control_01 .tab_control_sep{
+  width: 1px;
+  height: 20px;
+  margin: 5px 0 0px;
+  background: #e1e1e1;
+}
+
+
+/*  .tab_control_02*/
+.tab_control_02 {
+  display: flex;
+  height: 32px;
+  margin-bottom: 20px;
+  line-height: 29px;
+  background: #f5f5f5;
+}
+.tab_control_02 .tab_control_item {
+  padding: 0 18px;
+  font-size: 14px;
+  color: #999;
+  text-align: center;
+  cursor: pointer;
+}
+.tab_control_02 .tab_control_item.active,
+.tab_control_02 .tab_control_item:hover {
+  border-bottom: 3px solid #f3c258;
+  color: #333333;
+}
+.tab_control_02 .tab_control_sep{
+  width: 1px;
+  height: 20px;
+  margin: 5px 0 0px;
+  background: #e1e1e1;
+}
+
+
+
+
+/* 另一种类型的选项卡 */
+.tab_keyword {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 16px 0 18px;
+}
+
+.tab_keyword > .item {
+  height: 24px;
+  line-height: 24px;
+  padding: 0 10px;
+  margin: 0 8px 5px 0;
+  border: 1px solid #e5e5e5;
+  border-radius: 10px;
+  background: #f5f5f5;
+  font-size: 14px;
+  color: #333;
+}
+
+.tab_keyword > .item.active,
+.tab_keyword > .item:hover {
+  border-color: #f3c258;
+  background: #f3c258;
+  color: #fff;
+}
+
+
+/* 文本溢出为省略号 */
+.wrap_ellipsis {
+  overflow: hidden;
+  white-space:nowrap;
+  text-overflow: ellipsis;
+}
+
+.kpl_icon::before {
+  display: block;
+  content: "KPL";
+  height: 19px;
+  line-height: 19px;
+  font-size: 12px;
+  color: #999999;
+  text-align: center;
+  background-color: #e3e3e3;
+  border: 2px solid #e3e3e3;
+  border-radius: 10px;
+  text-indent: 2px;
+}
+
+.kpl-icon {
+  height: 19px;
+  line-height: 19px;
+  font-size: 12px;
+  background: #e3e3e3;
+  border-radius: 10px;
+  border: 2px solid #e3e3e3;
+  text-align: center;
+  color: #999999;
+  text-indent: 2px;
+}
+
+
+/* .item_sep::after {
+  display: inline;
+  content: "|";
+  font-size: 12px;
+  color: #494949;
+  margin: 0 2px;
+} */
+
+.icon {
+  display: inline-block;
+  vertical-align: top;
+  width: 24px;
+  height: 24px;
+  padding-right: 2px;
+}
+
+.icon_hot {
+  background: url("../images/header-imgs/header-sprite-01.webp") -163px -64px;
+}
+
+.icon_fans {
+  background: url("../images/header-imgs/header-sprite-01.webp") -137px -64px;
+}

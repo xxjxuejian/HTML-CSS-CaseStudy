@@ -75,3 +75,24 @@
   transform: rotate(90deg);
   opacity: .1;
 }
+
+.top-area .right .game-rank .rec-subnav {
+  position: absolute;
+  top: 41px;
+  right: 0;
+  width: 1020px;
+  /* height: 658px; */
+  height: 0;
+  overflow: hidden;
+  z-index: 10;
+  transition: height .3s ease;
+}
+.top-area .right .game-rank .rec-subnav iframe {
+  width: 100% ;
+  height: 100% ;
+}
+
+.top-area .right .game-rank:hover .rec-subnav {
+  /* 原本是658px,好像没必要这么高  */
+  height: 618px;
+}
