@@ -1,0 +1,217 @@
+.footer {
+  height: 300px;
+}
+.footer .footer-section {
+  padding-top: 80px;
+}
+
+.footer-top {
+  display: flex;
+  width: 100%;
+  height: 66px;
+  padding-bottom: 10px;
+  margin-bottom: 12px;
+  border-bottom: 2px solid #d4d4d4;
+}
+.footer-top .footer-logo1 {
+  width: 285px;
+  height: 64px;
+  background: url("../images/footer-imgs/footer-spr.webp") no-repeat ;
+}
+.footer-top .footer-logo2 {
+  width: 70px;
+  height: 64px;
+  background: url("../images/footer-imgs/footer-spr.webp") no-repeat  -285px 0;
+}
+
+.footer-bottom  {
+  display: flex;
+  justify-content: space-between;
+}
+.footer-bottom .left{
+  width: 508px;
+  font-size: 12px;
+  color: #666;
+}
+.footer-bottom .left p span{
+  margin-right: 12px;
+  color: #6d6d6d;
+  font-size: 12px;
+}
+
+.footer-bottom .left .intro {
+  margin-top: 6px;
+  font-size: 12px;
+  color: #666;
+}
+
+.footer-bottom .right {
+  width: 650px;
+}
+
+.footer-bottom .right  .footer-links {
+  display: flex;
+  flex-wrap: wrap;
+}
+.footer-bottom .right  .footer-links  .item {
+  display: flex;
+  font-size: 12px;
+  line-height: 20px;
+}
+.footer-bottom .right  .footer-links  .item a {
+  color: #646467;
+}
+.footer-bottom .right  .footer-links  .item .line {
+  margin: 0 3px ;
+  color: #494949;
+}
+
+.footer-bottom .right  .copy-right span {
+  font-size: 10px;
+  color: #646467;
+  margin-right: 45px;
+}
+.footer-bottom .right  .copy-right a {
+  font-size: 12px;
+  color: #646467;
+  padding-right: 10px;
+}
+
+
+.flow-download {
+  position: fixed;
+  top: 50%; /*50%是相对于包含块的高度*/
+  right: 0;
+  transform: translate(0,-50%);
+  width: 254px;
+  height: 494px;
+  background: url("../images/flow-imgs/flow-download.webp") no-repeat top left;
+}
+.flow-download .flow-dj {
+  position: absolute;
+  top: 15px;
+  left: 24px;
+  width: 165px;
+  height: 145px;
+  background: url("../images/flow-imgs/flow_dj.png") no-repeat top center;
+}
+
+.flow-download .flow-dj p{
+  display: block;
+  position: absolute;
+  top: 37px;
+  left: 12px;
+  width: 88px;
+  height: 36px;
+  font-size: 14px;
+  text-indent: 2px;
+  font-weight: bold;
+  line-height: 18px;
+  color: #62401b;
+  overflow: hidden;
+}
+.flow-download .flow-dj p:last-child {
+  top: 57px;
+  display: block;
+}
+
+.flow-download .flow-links {
+  position: absolute;
+  top: 160px;
+  left: 85px;
+  width: 117px;
+}
+
+.flow-download .flow-links .item {
+  position: relative;
+  height: 38px;
+  background-image:  url("../images/flow-imgs/flow-sprite.webp");
+  background-repeat: no-repeat;
+  background-size: 360px 569px;
+}
+
+.flow-download .flow-links .item.down-game {
+  background-position: -243px 0;
+  height: 132px;
+  padding-top: 2px;
+}
+.flow-download .flow-links .item.down-game img {
+  display: block;
+  width: 107px;
+  height: 107px;
+  margin: 0 auto;
+}
+
+.flow-download .flow-links .item.down-yd{
+  background-position: -243px -134px;
+}
+.flow-download .flow-links .item.down-wb{
+  background-position: -122px -120px;
+}
+.flow-download .flow-links .item.down-gzh{
+  background-position: -122px -160px;
+}
+.flow-download .flow-links .item.down-sph{
+  background-position: -122px 0;
+}
+.flow-download .flow-links .item.down-dy{
+  background-position: -122px 0;
+}
+
+.flow-download .flow-links .item:not(.down-game) .wrapper {
+  display: none;
+  position: absolute;
+  top: -66px;
+  left: -116px;
+  width: 115px;
+  height: 144px;
+  padding-top: 7px;
+  background-image: url("../images/flow-imgs/flow-sprite.webp");
+  background-repeat: no-repeat;
+  background-size: 360px 569px;
+  background-position: 0 -416px;
+  opacity: 0;
+  transition: all .3s ease-in;
+}
+.flow-download .flow-links .item:not(.down-game):hover .wrapper{
+  display: block;
+  opacity: 1;
+}
+
+.flow-download .flow-links .item:not(.down-game) .wrapper img {
+  display: block;
+  width: 101px;
+  height: 100px;
+  margin: 0 auto;
+}
+.flow-download .flow-links .item:not(.down-game) .wrapper .desc {
+  margin-top: 5px;
+}
+.flow-download .flow-links .item:not(.down-game) .wrapper p {
+  line-height: 17px;
+  color: #dcdcdc;
+  font-size: 12px;
+  text-align: center;
+  overflow: hidden;
+}
+.flow-download .flow-links .item:not(.down-game) .wrapper span {
+  color: #cd974b;
+}
+
+
+
+/* hover效果 */
+.flow-download .flow-links .item.down-yd:hover {
+  background-position: -243px -172px;
+}
+.flow-download .flow-links .item.down-wb:hover {
+  background-position: -122px -240px;
+}
+.flow-download .flow-links .item.down-gzh:hover {
+  background-position: -122px -200px;
+}
+.flow-download .flow-links .item.down-sph:hover{
+  background-position: -122px -42px;
+}
+
+

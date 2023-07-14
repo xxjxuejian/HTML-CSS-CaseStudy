@@ -1,0 +1,186 @@
+.main {
+  /* position: relative; */
+  overflow: hidden;
+  background: url("../images/main-imgs/main-bg.jpg") no-repeat center top;
+}
+.main  .bg-mask {
+  display: block;
+  width: 1200px;
+  height: 440px;
+  margin: 90px auto 5px;
+  text-indent: -9999px;
+}
+
+.main .main-content {
+  position: relative;
+  z-index: 2;
+  min-height: 600px;
+  /* padding-top: 540px; */
+}
+.main .main-content .bannerNews {
+  position: relative;
+  display: flex;;
+  width: 1200px;
+  height: 342px;
+  background: url("../images/main-imgs/bannerNews_bg.webp") no-repeat left top;
+}
+
+.main .main-content .bannerNews .banner {
+  width: 605px;
+  height: 342px;
+  position: relative;
+}
+
+/* .main .main-content .bannerNews .banner .photos {
+  width: 604px;
+  height: 298px;
+} */
+.main .main-content .bannerNews .banner .photos .item {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 604px;
+  height: 298px;
+}
+.main .main-content .bannerNews .banner .item img {
+  width: 100%;
+  height: 100%;
+}
+
+.main .main-content .bannerNews .banner .controls {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  width: 604px;
+  height: 44px;
+}
+.main .main-content .bannerNews .banner .controls a {
+  
+  display: block;
+  width: 120.8px;
+  height: 44px;
+  line-height: 44px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  text-align: center;
+  color: #b1b2be;
+}
+.main .main-content .bannerNews .banner .controls a:hover {
+  background: rgba(255,255,255,0.15);
+  color: #f3c258;
+}
+.main .main-content .bannerNews .news {
+  flex: 1;
+  padding: 0 17px;
+}
+.main .main-content .bannerNews .news .tab-hd {
+  display: flex;
+
+}
+.main .main-content .bannerNews .news .tab-hd .item {
+  width: 52px;
+  height: 45px;
+  line-height: 45px;
+  font-size: 14px;
+  text-align: center;      
+} 
+.main .main-content .bannerNews .news .tab-hd .item:hover,
+.main .main-content .bannerNews .news .tab-hd .item.active {
+  border-bottom: 3px solid #f3c258;
+}
+
+.main .main-content .bannerNews .news .tab-hd .item a{
+  display: inline-block;
+  color: #b8b9c5;
+}
+
+.main .main-content .bannerNews .news .news-list li {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 11px;
+  height: 21px;
+} 
+.main .main-content .bannerNews .news .news-list .item {
+  color: #b8b9c5;
+  font-size: 14px;
+}
+.main .main-content .bannerNews .news .news-list .item .title{
+  width: 230px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  display: inline-block;
+  vertical-align: top;
+  color: #b8b9c5;
+  font-size: 14px;
+  
+}
+.main .main-content .bannerNews .news .news-list li .time {
+  color: #999;
+  font-size: 12px;
+}
+.main .main-content .bannerNews .news .news-list li.line-sp {
+  width: 294px;
+  height: 36px;
+  line-height: 36px;
+  padding: 0 15px;
+  margin-top: 18px;
+  text-align: center;
+  font-size: 28px;
+  color: #333333;
+  background: #414046;
+}
+.main .main-content .bannerNews .news .news-list li.line-sp .hot-new,
+.main .main-content .bannerNews .news .news-list li.line-sp .time
+{
+  display: none;
+}
+.main .main-content .bannerNews .news .news-list li.line-sp .title{
+  
+  color: #f3c258;
+  font-size: 18px;
+  text-align: left;
+}
+
+.main .main-content .bannerNews .download-pannel {
+  width: 236px;
+  height: 342px;
+}
+.main .main-content .bannerNews .download-pannel a {
+  display: block;
+  width: 236px;
+  background: url("../images/header-imgs/header-sprite-01.webp") no-repeat;
+}
+.main .main-content .bannerNews .download-pannel .dl-btn {
+  height: 128px;  
+  background-position: 0 -219px;
+} 
+.main .main-content .bannerNews .download-pannel .ftenv-btn {
+  height: 106px;
+background-position: 0 -350px;
+}
+
+.main .main-content .bannerNews .download-pannel .ty-btn {
+  height: 108px;
+  background-position: 0 -461px;
+}
+
+.main .main-content .bannerNews .shiling {
+  position: absolute;
+  top: 0;
+  right: -58px;
+  width: 53px;
+  height: 68px;
+  background: url("../images/main-imgs/shiling.png") no-repeat;
+} 
+.main .main-content .bannerNews .fangchenmi {
+  position: absolute;
+  top: 78px;
+  right: -58px;
+  width: 53px;
+  height: 47px;
+  background: url("../images/main-imgs/fanchenmi.png") no-repeat;
+  background-size: contain;
+}

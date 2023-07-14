@@ -1,0 +1,207 @@
+
+.main {
+  overflow: hidden;
+  background: url("../images/main-imgs/main-bg.jpg") no-repeat center top/100% auto;
+}
+.main .bg-mask {
+  display: block;
+  width: 1200px;
+  height: 440px;
+  margin: 90px auto 5px;
+  text-indent: -9999px;
+}
+.main_center {
+  width: 1200px;
+  margin: 0 auto;
+}
+
+.news-section {
+  display: flex;
+  height: 342px;
+  background: url("../images/main-imgs/bannerNews_bg.webp") no-repeat left top;
+}
+
+/* 轮播图 */
+.main .news-section .banner{
+  width: 605px;
+  height: 342px;
+}
+.main .news-section .banner .image-list {
+  display: flex;
+  width: 604px;
+  height: 298px;
+  overflow: hidden;
+}
+.main .news-section .banner .image-list .item {
+  width: 604px;
+  height: 298px;
+  flex-shrink: 0;
+} 
+.main .news-section .banner .image-list .item a{
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.main .news-section .banner .image-list .item img {
+  width: 100%;
+  height: 100%;
+}
+.main .news-section .banner .title-list {
+  display: flex;
+  height: 44px;
+  line-height: 44px;
+}
+.main .news-section .banner .title-list .item {
+  flex-grow: 1;
+
+}
+.main .news-section .banner .title-list .item a{
+  display: block;
+  color: #b1b2be;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.main .news-section .banner .title-list .item.active a,
+.main .news-section .banner .title-list .item a:hover {
+  background: rgba(255,255,255,0.15);
+  color: #f3c258;
+} 
+/* 新闻 */
+.main .news-section .news {
+  flex: 1;
+  padding: 0 17px;
+  overflow: hidden;
+}
+
+/* ul和more需要水平排列 */
+.main .news-section .news .header-container {
+  display: flex;
+}
+.main .news-section .news .news-header {
+  display: flex;
+  height: 48px;
+  border-bottom: 1px solid #000;
+}
+.main .news-section .news .news-header .item {
+  width: 52px;
+  height: 48px;
+}
+.main .news-section .news .news-header .item a {
+  display: block;
+  width: 45px;
+  height: 48px;
+  box-sizing: border-box;
+  line-height: 45px;  /*行高会把这一行的高度直接固定住*/
+  text-align: center;
+  color: #b8b9c5;
+  transition: border-bottom .225s ease-out;
+}
+.main .news-section .news .news-header .item.active a,
+.main .news-section .news .news-header .item a:hover {
+  /* 底部增加边框的时候,高度就变成了48px */
+  border-bottom: 3px solid #f3c258 ;
+}
+
+/* more 元素不需要hover效果，单独设置，
+或者是上面的使用not伪类
+*/
+/* .main .news-section .news .news-header .item.more a, */
+/* .main .news-section .news .news-header .item.more a:hover {
+  border-bottom-color: transparent ;
+} */
+
+/* 不把这个more 和之前的放在一起 */
+.main .news-section .news .header-container .more {
+  display: block;
+  width: 45px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  border-bottom: 8px solid transparent;
+  color: #b8b9c5;
+}
+
+.main .news-section .news .notice {
+  height: 36px;
+  line-height: 36px;
+  padding: 0 15px;
+  margin-top: 18px;
+  margin-bottom: 11px;
+}
+.main .news-section .news .notice a{
+  display: block;
+  color: #f3c258;
+  font-size: 18px;
+  text-align: left;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+
+.main .news-section .news .news-list .item {
+  display: flex;
+  margin-bottom: 12px;
+}
+.main .news-section .news .news-list .item .news-txt{
+  flex: 1;
+  padding-right: 20px;
+  color: #b8b9c5;
+  font-size: 14px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.main .news-section .news .news-list .item .date {
+  color: #999;
+  font-size: 12px;
+}
+/* 下载 */
+.main .news-section .download{
+  width: 236px;
+  height: 342px;
+}
+.main .news-section .download a {
+  display: block;
+  background: url("../images/header-imgs/header-sprite-01.webp");
+}
+.main .news-section .download .download-btn {
+  height: 128px;
+  background-position:0 -219px;
+}
+.main .news-section .download .guard-btn {
+  height: 106px;
+  background-position: 0 -350px;
+}
+.main .news-section .download .exper-btn {
+  height: 108px;
+  background-position: 0 -461px;
+}
+
+/* 四个快速入口 */
+.main .quick_entrance .entrance-list {
+  display: flex;
+  justify-content: space-between;
+  height: 134px;
+  margin: 28px auto 34px;
+}
+.main .quick_entrance .entrance-list .item {
+    width: 291px;
+    /* height: 134px; 高度自动拉伸 */
+}
+.main .quick_entrance .entrance-list .item a {
+  display: block;
+  height: 100%;
+  /* 设置变形变大后，会溢出，需要设置溢出处理 */
+  overflow: hidden;
+}
+.main .quick_entrance .entrance-list .item a:hover img {
+  transform: scale(1.1);
+}
+.main .quick_entrance .entrance-list .item img {
+  width: 100%;
+  height: 100%;
+  transition: transform 400ms ease;
+}

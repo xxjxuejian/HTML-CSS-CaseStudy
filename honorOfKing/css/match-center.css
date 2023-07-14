@@ -1,0 +1,142 @@
+.match-section {
+  display: flex;
+}
+
+.match-section  .left-section {
+  margin-right: 33px;
+  width: 872px;
+}
+
+.match-section  .left-section .match-news {
+  display:flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  width: 872px;
+  height: 260px;
+}
+.match-section  .left-section .match-news .news-pic {
+  width: 211px;
+}
+
+.match-section  .left-section .match-news .news-pic a {
+  display: block;
+}
+.match-section  .left-section .match-news .news-pic img {
+  width: 100%;
+  height: 100%;
+}
+
+.match-section  .left-section .match-news .news-list {
+  width: 630px;
+}
+.match-section  .left-section .match-news .news-list .news-title {
+  height: 66px;
+}
+
+.match-section  .left-section .match-news .news-list .news-title .title {
+  display: block;
+  padding-right: 50px;
+  font-size: 24px;
+  color: #333;
+  text-align: left;
+}
+
+.match-section  .left-section .match-news .news-list .news-title .sub-title {
+  width: 470px;
+  line-height: 23px;
+  font-size: 14px;
+  color: #666666;
+}
+
+
+.match-section  .left-section .match-news .news-list a:hover {
+  text-decoration: underline;
+}
+.match-section  .left-section .match-news .news-list .newslists .item {
+  display: flex;
+  margin-bottom: 9px;
+}
+.match-section  .left-section .match-news .news-list .newslists .item .kpl-icon {
+  /* height: 19px;
+  line-height: 19px;
+  font-size: 12px;
+  background: #e3e3e3;
+  border-radius: 10px;
+  border: 2px solid #e3e3e3;
+  text-align: center;
+  color: #999999;
+  text-indent: 2px; */
+}
+
+.match-section  .left-section .match-news .news-list .newslists .item .news-txt{
+  flex: 1;
+  padding-left: 12px;
+  padding-right: 170px;
+  font-size: 14px;
+  color: #333;
+}
+
+.match-section  .left-section .match-news .news-list .newslists .item .time {
+  font-size: 12px;
+  color: #b8b9c5;
+}
+
+.match-section .right-section {
+  height: 300px;
+  width: 295px;
+}
+
+.match-section .right-section .schedule-arrange {
+  width: 100%;
+  margin-bottom: 20px;
+  border-collapse: collapse;
+  text-align: center;
+}
+
+.match-section .right-section .schedule-arrange thead {
+  height: 29px;
+  line-height: 29px;
+  font-size: 14px;
+  color: #999;
+  background: #f5f5f5;
+}
+
+.match-section .right-section .schedule-arrange tbody td {
+  height: 67px;
+  border-bottom: 1px solid #e5e5e5;
+  color: #333333;
+  font-size: 12px;
+}
+
+.match-section .right-section .schedule-arrange tbody .team-logo {
+  margin: 0 auto;
+  width: 25px;
+  height: 25px;
+  margin-bottom: 5px;
+}
+
+.match-section .right-section .schedule-arrange tbody .team-logo img{
+  width: 100%;
+  height: 100%;
+}
+
+.match-section .right-section .schedule-arrange tbody td:nth-child(3) {
+  font-size: 14px;
+  color: #f3c258;
+}
+
+/* 赛程广告位 */
+.match-section .right-section  .match-adtemplate {
+  width: 293px;
+  height: 159px;
+  margin-bottom: 15px;
+}
+
+.match-section .right-section  .match-adtemplate a {
+  display: block;
+}
+.match-section .right-section  .match-adtemplate img {
+  width: 293px;
+  height: 159px;
+  border-radius: 2px;
+}
