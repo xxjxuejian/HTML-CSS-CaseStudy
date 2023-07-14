@@ -48,6 +48,9 @@
   height: 386px;
   margin-bottom: 12px;
 }
+.products > .item:hover {
+  box-shadow: 0 0 10px 5px rgba(0, 0, 0, .1);
+}
 
 .products > .item a {
   display: block;
