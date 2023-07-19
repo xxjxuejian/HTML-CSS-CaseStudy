@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./css/reset.css">
+  <link rel="stylesheet" href="./css/common.css">
+  <style>
+   .banner{
+      position: relative;
+    }
+    .banner  .images{
+      position: relative;
+      height: 550px;
+    }
+    .banner .images .item {
+      position: absolute;
+      left: 0;
+      top:0;
+      width: 100%; 
+      overflow: hidden;
+      opacity: 0;
+      transition: opacity .3s ease;
+    }
+    .banner .images .item.active {
+      opacity: 1;
+    }
+    .banner .images .item img{
+      position: relative;
+      left: 50%;
+      transform: translateX(-50%);
+      height: 550px;
+      width: 1423px;
+    }
+
+    .banner .changeImg .ctl {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      margin: auto 0;
+      width: 64px;
+      height: 64px;
+      background: url("./imges/zuojiantou.png") no-repeat center center;
+      background-color:rgba(0, 0, 0, .1);
+      cursor: pointer;
+    }
+    .banner .changeImg .prev {
+      left: 50px;
+    }
+    .banner .changeImg .next {
+      right: 50px;
+      transform: rotate(180deg);
+    }
+  </style>
+</head>
+<body>
+  <div class="banner">
+    <div class="images">
+    </div>
+    <div class="changeImg">
+      <span class="ctl prev"></span>
+      <span class="ctl next"></span>
+    </div>
+    <ul class="indicators">
+      <li class="item"></li>
+    </ul>
+  </div>
+
+
+  <script src="./json/banner_data.js"></script>
+  <script>
+    const serverURL = "https://res.vmallres.com/pimages/";
+    const imagesEl = document.querySelector(".banner .images");
+    const changeImgEl = document.querySelector(".banner .changeImg");
+    const bannerLength = banners.length;
+    let activeImgIndex  = 0;
+    
+    
+    // 遍历轮播图的数组，创建每一个轮播项
+    for(let i=0;i<banners.length;i++){
+      // 获取当前的元素
+      const curItem = banners[i];
+      
+      // 创建a元素
+      const aEl = document.createElement("a");
+      aEl.classList.add("item");
+      // 如果是第一个张，默认展示出来
+      if(i===0){
+        aEl.classList.add("active");
+        activeImgIndex = i;
+      }
+      // 内部的img
+      const imgEl = document.createElement("img");
+      imgEl.src = serverURL + curItem["imgUrl"]
+
+      aEl.append(imgEl);
+      imagesEl.append(aEl);
+    }
+    
+    // 利用事件委托给两个切换按钮添加事件处理
+    changeImgEl.addEventListener("click",function(event){
+      // 只有点击对了元素才处理
+      // 点击上一张
+      if(event.target.classList.contains("prev")){
+        imagesEl.children[activeImgIndex].classList.remove("active");
+        activeImgIndex = --activeImgIndex<0? bannerLength-1 : activeImgIndex;
+        imagesEl.children[activeImgIndex].classList.add("active");
+      }
+      // 点击下一张
+      if(event.target.classList.contains("next")){
+        imagesEl.children[activeImgIndex].classList.remove("active");
+        activeImgIndex = ++activeImgIndex % bannerLength;
+        imagesEl.children[activeImgIndex].classList.add("active");
+      }
+    })
+  
+  
+  
+  </script>
+  
+</body>
+</html>

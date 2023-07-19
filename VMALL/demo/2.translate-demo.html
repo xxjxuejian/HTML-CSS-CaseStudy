@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .wrapper {
+      width: 100px;
+      height: 200px;
+      margin: 100px auto;
+      outline: 2px solid red;
+    }
+    .box {
+      position: relative;
+      width: 100px;
+      height: 100px;
+      background-color: orange;      
+    }
+    .item:nth-child(1) {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100px;
+      height: 100px;
+      background-color: rgb(0, 115, 255);
+    }
+    .item:nth-child(2) {
+      position: absolute;
+      top: 0;
+      left: 100px;
+      width: 100px;
+      height: 100px;
+      background-color: rgb(101, 14, 207);
+    }
+    .item:nth-child(3) {
+      position: absolute;
+      top: 0;
+      left: 200px;
+      width: 100px;
+      height: 100px;
+      background-color: rgb(99, 203, 2);
+    }
+  </style>
+</head>
+<body>
+  
+  <div class="wrapper">
+    <div class="box">
+      <div class="item">
+      </div>
+      <div class="item">
+      </div>
+      <div class="item">
+      </div>
+    </div>
+  </div>
+  <button id="left">上</button>
+  <button id="right">下</button>
+  <script>
+    let i = 0;
+    const leftEl = document.getElementById("left");
+    const rightEl = document.getElementById("right");
+    const boxEl = document.querySelector(".box");
+    leftEl.addEventListener("click",function(event){
+      i--;
+      boxEl.style = `transform:translateX(${i*100}%)`;
+    })
+    rightEl.addEventListener("click",function(event){
+      i++;
+      boxEl.style = `transform:translateX(${i*100}%)`;
+    })
+
+
+  </script>
+</body>
+</html>

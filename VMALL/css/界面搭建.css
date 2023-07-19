@@ -25,6 +25,7 @@
   font-size: 12px;
   color: #000;
   cursor: pointer;
+  text-align: center;
 }
 .operation > .row .item.active {
   color: red;
@@ -51,6 +52,9 @@
 .products > .item:hover {
   box-shadow: 0 0 10px 5px rgba(0, 0, 0, .1);
 }
+.products > .item.empty {
+  height: 0;
+}
 
 .products > .item a {
   display: block;
@@ -69,6 +73,7 @@
   margin-bottom: 5px;
 }
 .products > .item .desc {
+  height: 19px;
   color: #666;
 }
 

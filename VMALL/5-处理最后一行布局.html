@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./css/reset.css">
+  <link rel="stylesheet" href="./css/common.css">
+  <link rel="stylesheet" href="./css/界面搭建.css">
+  <style>
+  </style>
+</head>
+<body>
+  
+  <div class="wrapper">
+    <div class="crumbs">
+      <span class="item">首页</span>
+      <span>&gt;</span>
+      <span class="item">笔记本</span>
+    </div>    
+
+    <!--  -->
+    <div class="operation">
+      <ul class="row category">
+        <li class="item">分类</li>
+        <li class="item">笔记本</li>
+        <li class="item">台式机</li>
+        <li class="item">智慧屏</li>
+      </ul>
+      <ul class="row discount">
+        <li class="item">服务优惠</li>
+        <li class="item active">仅看有货</li>
+        <li class="item">分期免息</li>
+        <li class="item">优惠商品</li>
+      </ul>
+      <ul class="row sort">
+        <li class="item">排序</li>
+        <li class="item active">综合</li>
+        <li class="item">最新</li>
+        <li class="item">评论数</li>
+        <li class="item">价格</li>
+      </ul>
+    </div>
+
+
+    <ul class="products">
+      <!-- <li class="item">
+        <a href="#">
+          <img class="album" src="./imges/product_01.webp" alt="">
+          <div class="title">HUAWEI MATEBook E 12.6英寸</div>
+          <div class="desc">预定立省300元|12期免息</div>
+          <div class="price">￥6499</div>
+          <div class="discount">
+            <span class="tip">分期免息</span>
+            <span class="tip">赠送积分</span>
+          </div>
+          <div class="comment">
+            <span class="cm-num">3190人评价</span>
+            <span class="cm-rate">96%好评</span>
+          </div>
+        </a>
+      </li> -->
+
+
+     
+    </ul>
+  </div>
+
+
+  <script src="./json/product_data.js"></script>
+  <script>
+
+    // 这种方式推荐仅仅展示数据的时候使用，如果需要太多的用户操作，不适合
+    const serverURL = "https://res.vmallres.com/pimages/";
+    // 外层的ul元素
+    const productsEl = document.querySelector(".products");
+    
+    // 筛选项
+    const discountItems = document.querySelectorAll(".discount .item");
+    const activeEles = document.querySelectorAll(".discount .item.active");
+    // 过滤以后的结果数组
+    let filtedArray = resultList;
+    // 过滤关键词的数组,一开始获取类为active的
+    let filterKeys = [];
+    for(let activeEl of activeEles){
+      filterKeys.push(activeEl.textContent);
+    }
+    filterResultList();
+    showResultList();
+
+
+    for(let i=1;i<discountItems.length;i++){
+      discountItems[i].addEventListener("click",function(){
+        // 1.点击这个元素，首先是样式设置
+        // 2.样式设置完，获取到过滤关键词的列表
+        if(this.classList.contains("active")){
+          this.classList.remove("active");
+          let delKeyIndex = filterKeys.indexOf(this.textContent);
+          filterKeys.splice(delKeyIndex,1);
+        }else{
+          this.classList.add("active");
+          filterKeys.push(this.textContent);
+        }
+
+        // 3.根据过滤关键词列表，过滤原始数组
+        filterResultList();
+
+        
+        // 清空一下之前的数据
+        productsEl.innerHTML="";
+        // 4.根据过滤以后的数组展示数据
+        showResultList();
+      })
+    }
+    
+    // 对原始数组按照关键词过滤
+    function filterResultList(){
+      filtedArray = resultList.filter(function(element){
+          let isInclude = true;
+          // 获取服务标签
+          const servLabels = element["services"];
+          for(let fKey of filterKeys){
+            if(!servLabels.includes(fKey)){
+              // 如果当前商品中不含有过滤关键词，直接就可以排除这个商品了，
+              // 所以直接break
+              isInclude = false;
+              break;
+            }
+          }
+          return isInclude;
+        });
+    }
+
+    // 展示应该展示的列表
+    function showResultList(){
+      // 根据筛选完的数组动态创建显示的项目
+      for(let item of filtedArray){
+        // 提前拼接一下动态的内容
+        let discountString = "";
+        for(value of item["promoLabels"]){
+          discountString += `<span class="tip">${value}</span>`;
+        }
+
+        // 创建li元素
+        const liEl = document.createElement("li");
+        liEl.classList.add("item");
+        liEl.innerHTML = `
+        <a href="#">
+            <img class="album" src="${serverURL}${item["photoPath"]}800_800_${item["photoName"]}" alt="">
+            <div class="title">${item["name"]}</div>
+            <div class="desc">${item["promotionInfo"]}</div>
+            <div class="price">￥${item["priceAccurate"]}</div>
+            <div class="discount">
+              ${discountString}
+            </div>
+            <div class="comment">
+              <span class="cm-num">${item["rateCount"]}人评价</span>
+              <span class="cm-rate">${item["goodRate"]}%好评</span>
+            </div>
+          </a>
+          `
+          productsEl.append(liEl);
+      }
+      
+      formatDisplay();
+    }
+
+    // 格式化显示最后一行的数据，排列整齐
+    function formatDisplay(){
+      // 直接在最后多放几个li，因为高度设置为0，所以不会影响其他布局
+      // 这里为什么是3呢，只是为了简单的做法，即使多了也不会影响的
+      for(let i=0; i<3; i++){
+        const liElTail = document.createElement("li");
+        liElTail.classList.add("item");
+        liElTail.classList.add("empty");
+        productsEl.append(liElTail);
+      }
+    }
+
+  </script>
+</body>
+</html>

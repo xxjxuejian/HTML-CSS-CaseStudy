@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <script>
+    // let a = [2,6,3,0,5,3,-4];
+    // let b = a;
+    // b.sort((a,b)=> a-b);
+    // console.log(b);
+    // console.log(a);
+    // 里面是原始类型，都会改变
+
+
+    let a = [
+      {age : 14},
+      {age : 20},
+      {age : 5},
+      {age : 40},
+      {age : 10},
+      {age : 37}
+    ]
+
+    let b = [...a];
+    b.sort((a, b) => a.age - b.age);
+    console.log(b);
+    console.log(a);
+  </script>
+  
+</body>
+</html>

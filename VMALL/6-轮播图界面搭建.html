@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./css/reset.css">
+  <link rel="stylesheet" href="./css/common.css">
+  <style>
+    .banner{
+
+    }
+    .banner  .images{
+      position: relative;
+    }
+    .banner .images .item {
+      position: absolute;
+      left: 0;
+      top:0;
+      width: 100%; 
+      overflow: hidden;
+      opacity: 0;
+    }
+    .banner .images .item.active {
+      opacity: 1;
+    }
+    .banner .images .item img{
+      position: relative;
+      left: 50%;
+      transform: translateX(-50%);
+      height: 550px;
+      width: 1423px;
+    }
+  </style>
+</head>
+<body>
+  <div class="banner">
+    <div class="images">
+    </div>
+    <div class="changeImg">
+      <span class="ctl prev">上一张</span>
+      <span class="ctl next">下一张</span>
+    </div>
+    <ul class="indicators">
+      <li class="item"></li>
+    </ul>
+  </div>
+
+
+  <script src="./json/banner_data.js"></script>
+  <script>
+    const serverURL = "https://res.vmallres.com/pimages/";
+    const imagesEl = document.querySelector(".banner .images");
+
+    // 遍历轮播图的数组，创建每一个轮播项
+    for(let i=0;i<banners.length;i++){
+      // 获取当前的元素
+      const curItem = banners[i];
+      
+      // 创建a元素
+      const aEl = document.createElement("a");
+      aEl.classList.add("item");
+      // 如果是第一个张，默认展示出来
+      if(i===0){
+        aEl.classList.add("active");
+      }
+      // 内部的img
+      const imgEl = document.createElement("img");
+      imgEl.src = serverURL + curItem["imgUrl"]
+
+      aEl.append(imgEl);
+      imagesEl.append(aEl);
+    }
+  </script>
+  
+</body>
+</html>

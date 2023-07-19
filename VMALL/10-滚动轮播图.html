@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./css/reset.css">
+  <link rel="stylesheet" href="./css/common.css">
+  <style>
+    .banner{
+      position: relative;
+      overflow: hidden;
+    }
+    .banner  .images{
+      position: relative;
+      width: 1423px;
+      height: 550px;
+      /* overflow: hidden; */
+      transition: all .3s ease;
+    }
+    .banner .images .item {
+      position: absolute;
+      left: 0;
+      top:0;
+      width: 1423px;
+      height: 550px;
+    }
+    .banner .images .item.active {
+    }
+    .banner .images .item img{
+      height: 550px;
+      width: 1423px;
+    }
+
+    .banner .changeImg .ctl {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      margin: auto 0;
+      width: 64px;
+      height: 64px;
+      background: url("./imges/zuojiantou.png") no-repeat center center;
+      background-color:rgba(0, 0, 0, .1);
+      cursor: pointer;
+    }
+    .banner .changeImg .prev {
+      left: 50px;
+    }
+    .banner .changeImg .next {
+      right: 50px;
+      transform: rotate(180deg);
+    }
+
+    .banner .indicators {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 50px;
+      display: flex;
+      justify-content: center;
+    }
+    .banner .indicators .item {
+      width: 8px;
+      height: 8px;
+      margin: 0 7px;
+      border-radius: 50%;
+      background-color: rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+    }
+    .banner .indicators .item.active {
+      background-color: red;
+    }
+  </style>
+</head>
+<body>
+  <div class="banner">
+    <div class="images">
+    </div>
+    <div class="changeImg">
+      <span class="ctl prev"></span>
+      <span class="ctl next"></span>
+    </div>
+    <ul class="indicators">
+
+    </ul>
+  </div>
+
+
+  <script src="./json/banner_data.js"></script>
+  <script>
+    const serverURL = "https://res.vmallres.com/pimages/";
+    const bannerEl = document.querySelector(".banner");
+    const imagesEl = document.querySelector(".banner .images");
+    const changeImgEl = document.querySelector(".banner .changeImg");
+    const indicatorEl = document.querySelector(".indicators");
+    const bannerLength = banners.length;
+    // prevImgIndex，前一张图片的索引
+    let prevImgIndex = null;
+    // activeImgIndex 当前展示的图片的索引
+    let activeImgIndex  = 0;
+    let TimerID = null;
+    
+    // 1.遍历轮播图的数组，创建每一个轮播项
+    for(let i=0;i<bannerLength;i++){
+      // 获取当前的元素
+      const curItem = banners[i];
+      
+      // 创建a元素
+      const aEl = document.createElement("a");
+      aEl.classList.add("item");
+      // 如果是第一张，默认展示出来
+      if(i === activeImgIndex){
+        aEl.classList.add("active");
+      }
+      // 内部的img
+      const imgEl = document.createElement("img");
+      imgEl.src = serverURL + curItem["imgUrl"]
+
+      aEl.style.left = `${i*100}%`;
+
+      aEl.append(imgEl);
+      imagesEl.append(aEl);
+    }
+
+
+    // // 前面和后面各追加一个
+    const frontImgEl = imagesEl.children[bannerLength-1].cloneNode(true);
+    const tailImgEl = imagesEl.children[0].cloneNode(true);
+    // // 偏移量还需要调整
+    frontImgEl.style.left = "-100%";
+    tailImgEl.style.left = `${bannerLength*100}%`;
+
+    imagesEl.prepend(frontImgEl);
+    imagesEl.append(tailImgEl);
+
+
+    
+    // 2.动态创建指示器
+    for(let i=0;i<bannerLength;i++){
+      const liEl = document.createElement("li");
+      if(i === activeImgIndex){
+        liEl.classList.add("active");
+      }
+      liEl.classList.add("item");
+      indicatorEl.append(liEl);
+    }
+
+    // 3.利用事件委托给两个切换按钮添加事件处理
+    changeImgEl.addEventListener("click",function(event){
+      // 只有点击对了元素才处理
+      // 点击上一张
+      if(event.target.classList.contains("prev")){
+        prevImgIndex = activeImgIndex;
+        activeImgIndex--;
+        console.log(prevImgIndex,activeImgIndex);
+        imagesEl.style.transition = "all .3s ease";
+        imagesEl.style.transform = `translateX(${-activeImgIndex*100}%)`;
+        if( !(activeImgIndex < 0)) switchIndicators();
+      }
+      // 点击下一张
+      if(event.target.classList.contains("next")){
+        prevImgIndex = activeImgIndex;
+        activeImgIndex++;
+        imagesEl.style.transition = "all .3s ease";
+        imagesEl.style.transform = `translateX(${-activeImgIndex*100}%)`;
+        if(activeImgIndex !== bannerLength) switchIndicators();
+      }
+    })
+
+    imagesEl.ontransitionend = function(){
+      if(activeImgIndex === bannerLength){
+        activeImgIndex = 0;
+        imagesEl.style.transition = "none";
+        imagesEl.style.transform = `translateX(${-activeImgIndex*100}%)`;
+        switchIndicators();
+      }
+      if(activeImgIndex < 0){
+        activeImgIndex = bannerLength-1;
+        imagesEl.style.transition = "none";
+        imagesEl.style.transform = `translateX(${-activeImgIndex*100}%)`;
+        switchIndicators();
+      }
+    }
+
+    
+    // 4.利用事件委托给指示器添加点击事件
+    // 另外指示器在点击的时候，切换的图片就是切换到指定的那一张，不是上下切换了
+    indicatorEl.addEventListener("click",function(event){
+      if(event.target.classList.contains("item")){
+        // 需要切换到当前点击的位置的索引
+        const indicators = Array.from(indicatorEl.children);
+        const clickIndex =  indicators.findIndex(function(element){
+          return event.target === element;
+        });
+        prevImgIndex = activeImgIndex;
+        activeImgIndex = clickIndex;
+        imagesEl.style.transition = "all .3s ease";
+        imagesEl.style.transform = `translateX(${-activeImgIndex*100}%)`;
+        switchIndicators();
+      }
+    })
+
+    // 5.暂停轮播,在鼠标移入取消定时器
+    bannerEl.addEventListener("mouseenter",function(){
+      stopTimer();
+    })
+    // 移出的时候,重新开定时器
+    bannerEl.addEventListener("mouseleave",function(){
+      startTimer();
+    })
+
+    // 6.默认自动开启轮播，自动切换就是利用定时器
+    // startTimer();
+
+    // 图片切换联动指示器切换，
+    // 图片切换的时候，索引的改变也对应着指示器索引的改变
+    // 切换指示器的函数
+    function switchIndicators(){
+      const prevIndicator = indicatorEl.children[prevImgIndex];
+      const activeIndicator = indicatorEl.children[activeImgIndex];
+      prevIndicator.classList.remove("active");
+      activeIndicator.classList.add("active");
+    }
+
+    // 切换轮播图片的函数
+    function switchBanner(){
+      imagesEl.children[prevImgIndex].classList.remove("active");
+      imagesEl.children[activeImgIndex].classList.add("active");
+    }
+    
+    // 开启定时器
+    // startTimer();
+    function startTimer(){
+      TimerID =  setInterval(function(){
+        prevImgIndex = activeImgIndex;
+        activeImgIndex++;
+        imagesEl.style.transition = "all .3s ease";
+        imagesEl.style.transform = `translateX(${-activeImgIndex*100}%)`;
+        if(activeImgIndex !== bannerLength) switchIndicators();
+      },2000);
+    }
+
+    // 停止定时器
+    function stopTimer(){
+      clearInterval(TimerID);
+    }
+
+  </script>
+  
+</body>
+</html>
